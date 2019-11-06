@@ -25,6 +25,8 @@ public class SplashActivity extends AppCompatActivity {
         config.getAfterLogoTextView().setTextColor(Color.WHITE);
         config.getAfterLogoTextView().setTextSize(36);
 
+
+
         View easySplashScreen = config.create();
         setContentView(easySplashScreen);
 
