@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <View
+        android:id="@+id/loginView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/verificationText"
+        android:layout_width="152dp"
+        android:layout_height="36dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Verification sms"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumEntry"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumEntry" />
+
+    <View
+        android:id="@+id/nameEntry"
+        android:layout_width="268dp"
+        android:layout_height="59dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <View
+        android:id="@+id/nameEntry2"
+        android:layout_width="268dp"
+        android:layout_height="59dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/verificationText" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="152dp"
+        android:layout_height="36dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginRight="180dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginView"
+        app:layout_constraintTop_toTopOf="@+id/loginView" />
+
+    <TextView
+        android:id="@+id/phoneNum"
+        android:layout_width="231dp"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Phone number"
+        app:layout_constraintStart_toStartOf="@+id/nameEntry"
+        app:layout_constraintTop_toBottomOf="@+id/nameEntry" />
+
+    <View
+        android:id="@+id/phoneNumEntry"
+        android:layout_width="268dp"
+        android:layout_height="59dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:cacheColorHint="@android:color/holo_green_dark"
+
+        app:layout_constraintStart_toStartOf="@+id/phoneNum"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNum" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneNumEntry"
+        app:layout_constraintEnd_toEndOf="@+id/phoneNumEntry"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumEntry"
+        app:layout_constraintTop_toTopOf="@+id/phoneNumEntry" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="167dp"
+        android:layout_marginLeft="167dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginRight="156dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSend" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/nameEntry"
+        app:layout_constraintEnd_toEndOf="@+id/nameEntry"
+        app:layout_constraintStart_toStartOf="@+id/nameEntry"
+        app:layout_constraintTop_toTopOf="@+id/nameEntry" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:text="Send Verification Code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameEntry2" />
+
+    <EditText
+        android:id="@+id/editTextVerificationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/nameEntry2"
+        app:layout_constraintEnd_toEndOf="@+id/nameEntry2"
+        app:layout_constraintStart_toStartOf="@+id/nameEntry2"
+        app:layout_constraintTop_toTopOf="@+id/nameEntry2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
