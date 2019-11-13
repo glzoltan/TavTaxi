@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "23454752277",
+    "firebase_url": "https://tavtaxi-edb60.firebaseio.com",
+    "project_id": "tavtaxi-edb60",
+    "storage_bucket": "tavtaxi-edb60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23454752277:android:e82b553d6c7dead023381c",
+        "android_client_info": {
+          "package_name": "com.example.tavtaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23454752277-8dlh2p6ga81o8khcg5jc6lftde75rh3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tavtaxi",
+            "certificate_hash": "19f3270fe3998c1d9a43f29fb8f707d8e8e86306"
+          }
+        },
+        {
+          "client_id": "23454752277-udb14g6lgt47s7osa2h97nit2ku1s8s1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tavtaxi",
+            "certificate_hash": "859de9fb840d2b26b0449e2157d28424e764b6a6"
+          }
+        },
+        {
+          "client_id": "23454752277-f7i5c5gh92tmgq33imd2enlbf5gn92pb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tavtaxi",
+            "certificate_hash": "66422db33b7d240d18e61d33d3a09cf2692d16f8"
+          }
+        },
+        {
+          "client_id": "23454752277-50ks12ocma5pbnn8sbad25h32qkljp6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmsbKSIVGpjVyvbaxhOLYbsXZgC1dMaDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23454752277-50ks12ocma5pbnn8sbad25h32qkljp6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
