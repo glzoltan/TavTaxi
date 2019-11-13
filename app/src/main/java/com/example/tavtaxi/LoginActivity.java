@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPhone ;
     private EditText editTextVerificationCode ;
     String codeSent;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextPhone = findViewById(R.id.editTextPhoneNumber);
         editTextVerificationCode = findViewById(R.id.editTextVerificationCode);
         mAuth = FirebaseAuth.getInstance();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").setValue("Adam");
+
         sentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
