@@ -44,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("users").setValue("Zoli");
+
+        mDatabase.child("users").setValue("User");
+
 
         sentButton.setOnClickListener(new View.OnClickListener() {
             @Override
