@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
@@ -17,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
 
         EasySplashScreen config = new EasySplashScreen(SplashActivity.this)
                 .withFullScreen()
-                .withTargetActivity(MainActivity.class)
+                .withTargetActivity(LoginActivity.class)
                 .withSplashTimeOut(3000)
                 .withBackgroundResource(R.drawable.background)
                 .withLogo(R.drawable.taxi)

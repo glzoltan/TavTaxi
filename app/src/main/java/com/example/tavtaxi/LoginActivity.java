@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),
                 "Verification code sent", Toast.LENGTH_LONG).show();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phone,        // Phone number to verify
+                "+4"+phone,        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
@@ -130,6 +130,9 @@ public class LoginActivity extends AppCompatActivity {
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
             Toast.makeText(getApplicationContext(),
                     "Verification Successfull", Toast.LENGTH_LONG).show();
+                    editTextVerificationCode.setText(phoneAuthCredential.getSmsCode());
+
+
         }
 
         @Override
@@ -142,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
             super.onCodeSent(s, forceResendingToken);
 
             codeSent = s;
+
         }
     };
 
