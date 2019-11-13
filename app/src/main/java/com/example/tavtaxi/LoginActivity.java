@@ -44,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("users").setValue("Emese");
+
+        mDatabase.child("users").setValue("User");
+
 
         sentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                             //here you can open new activity
                             Toast.makeText(getApplicationContext(),
                                     "Login Successfull", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                             startActivity(intent);
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
