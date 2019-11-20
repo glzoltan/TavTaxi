@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TavTaxi</string>
+    <string-array name="locations_array">
+        <item>Gyergyószentmiklós</item>
+        <item>Marosvásárhely</item>
+        <item>Csíkszereda</item>
+        <item>Székelyudvarhely</item>
+        <item>Gyergyócsomafalva</item>
+        <item>Ákosfalva</item>
+    </string-array>
 </resources>
