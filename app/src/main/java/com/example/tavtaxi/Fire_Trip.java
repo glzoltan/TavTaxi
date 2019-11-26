@@ -1,30 +1,34 @@
 package com.example.tavtaxi;
 
-public class Fire_Trip {
-    private String ID;
-    private String FROM;
-    private String WHERE;
-    private String WHEN;
+public class Fire_Trip{
+    public String id;
+    public String from;
+    public String where;
+    public String when;
+
+    public Fire_Trip(){
+
+    }
     public Fire_Trip(String ID, String FROM, String WHERE, String WHEN) {
-        this.ID = ID;
-        this.FROM = FROM;
-        this.WHERE = WHERE;
-        this.WHEN = WHEN;
+        this.id = ID;
+        this.from = FROM;
+        this.where = WHERE;
+        this.when = WHEN;
     }
     public String getID() {
-        return ID;
+        return id;
     }
 
     public String getFROM() {
-        return FROM;
+        return from;
     }
 
     public String getWHERE() {
-        return WHERE;
+        return where;
     }
 
     public String getWHEN() {
-        return WHEN;
+        return when;
     }
 
 
