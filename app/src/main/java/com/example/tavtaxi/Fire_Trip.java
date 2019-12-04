@@ -5,6 +5,7 @@ public class Fire_Trip{
     public String from;
     public String where;
     public String when;
+    public String freeStates;
 
     public Fire_Trip(){
 
@@ -14,6 +15,13 @@ public class Fire_Trip{
         this.from = FROM;
         this.where = WHERE;
         this.when = WHEN;
+    }
+    public  Fire_Trip(String ID, String FROM, String WHERE, String WHEN, String FREESTATES){
+        this.id = ID;
+        this.from = FROM;
+        this.where = WHERE;
+        this.when = WHEN;
+        this.freeStates = FREESTATES;
     }
     public String getID() {
         return id;
@@ -30,6 +38,8 @@ public class Fire_Trip{
     public String getWHEN() {
         return when;
     }
+
+    public String getFreeStates(){return freeStates;}
 
 
 

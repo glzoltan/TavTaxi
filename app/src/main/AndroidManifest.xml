@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListSelfTrips">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +20,8 @@
         </activity>
         <activity android:name=".search_transport" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".ListTravels" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ListSelfTrips" />
+        <activity android:name=".ListTravels">
 
         </activity>
         <activity android:name=".MainActivity" />
