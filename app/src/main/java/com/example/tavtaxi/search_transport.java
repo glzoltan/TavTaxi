@@ -3,6 +3,7 @@ package com.example.tavtaxi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,9 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class search_transport extends AppCompatActivity {
@@ -18,8 +22,9 @@ public class search_transport extends AppCompatActivity {
     Calendar c;
     DatePickerDialog dpd;
     Spinner spinner,spinner2;
-    Button nBtn;
+    Button nBtn,search;
     TextView nTv;
+    DatabaseReference db;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_transport);
@@ -49,6 +54,24 @@ public class search_transport extends AppCompatActivity {
                 },day,month,year);
                 dpd.show();
 
+            }
+        });
+        search=(Button)findViewById(R.id.button7);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db = FirebaseDatabase.getInstance().getReference("trips");
+                String id=db.push().getKey();
+                Spinner spn1=(Spinner)findViewById(R.id.spinner);
+                String from=spn1.getSelectedItem().toString();
+                Spinner spn2=(Spinner)findViewById(R.id.spinner2);
+                String where=spn2.getSelectedItem().toString();
+                Button btn2=(Button)findViewById(R.id.button);
+                String when=btn2.getText().toString();
+                Fire_Trip trip= new Fire_Trip(id,from,where,when);
+                db.child(id).setValue(trip);
+                Intent intent = new Intent(getApplicationContext(), ListTravels.class);
+                startActivity(intent);
             }
         });
     }
