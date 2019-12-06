@@ -36,6 +36,7 @@ public class Fire_Trip_Offer {
         return when;
     }
 
+
     public ArrayList<String> getFreeStates() {
         return freeStates;
     }
