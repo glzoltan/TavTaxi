@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TripsAdapter extends  RecyclerView.Adapter<TripsAdapter.TripsViewHolder> {
@@ -35,7 +37,18 @@ public class TripsAdapter extends  RecyclerView.Adapter<TripsAdapter.TripsViewHo
         Fire_Trip trip = TripList.get(position);
         holder.from.setText(trip.getFROM());
         holder.to.setText(trip.getWHERE());
-        holder.when.setText(trip.getWHERE());
+        holder.when.setText(trip.getWHEN());
+        holder.states.setText(trip.getFreeStates());
+        holder.phone.setText(trip.getPhoneNumber());
+        ArrayList<String> cts=trip.getCities();
+        String item = "";
+        for(int i=0;i < cts.size();i++){
+            item = item + cts.get(i);
+            if(i != cts.size()-1){
+                item= item + ", ";
+            }
+        }
+        holder.cities.setText(item);
 
     }
 
@@ -46,13 +59,18 @@ public class TripsAdapter extends  RecyclerView.Adapter<TripsAdapter.TripsViewHo
 
     class TripsViewHolder extends RecyclerView.ViewHolder{
 
-        TextView from,to,when;
+        TextView from,to,when,cities;
+        TextView phone,states;
         public TripsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             from = itemView.findViewById(R.id.from_tv);
-            to = itemView.findViewById(R.id.when_vt);
+            to = itemView.findViewById(R.id.where_tv);
             when = itemView.findViewById(R.id.when_vt);
+            states =itemView.findViewById(R.id.free_tv);
+            cities = itemView.findViewById(R.id.cities_tv);
+            phone=itemView.findViewById(R.id.textPhone);
+
         }
     }
 }

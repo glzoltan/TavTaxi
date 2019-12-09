@@ -33,7 +33,7 @@ public class ListSelfTrips extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewSelfTrips);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Fire_Trip newTrip = new Fire_Trip("id","Here","There","When");
+        Fire_Trip newTrip = new Fire_Trip("id","Here","There","When",null,null,null);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Trips").push().setValue(newTrip);
@@ -47,7 +47,7 @@ public class ListSelfTrips extends AppCompatActivity {
                             String from = self_trip.getFROM();
                             String where = self_trip.getWHERE();
                             String when = self_trip.getWHEN();
-                            selfTripList.add(new Fire_Trip("id", from, where, when));
+                            selfTripList.add(new Fire_Trip("id", from, where, when,null,null,null));
                             adapter = new SelfTripsAdapter(ListSelfTrips.this, selfTripList);
                             recyclerView.setAdapter(adapter);
                         }
