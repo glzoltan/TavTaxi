@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class Offer_transport extends AppCompatActivity {
     Spinner spinnerfrom,spinnerwhere;
     Button btndate,btnother,btnadd;
     TextView textother;
+    EditText phnum, freestates;
     DatabaseReference db;
     String[] listItems;
     boolean[] checkedItems;
@@ -44,7 +46,8 @@ public class Offer_transport extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerwhere.setAdapter(adapter2);
         btndate=findViewById(R.id.button);
-
+        phnum=findViewById(R.id.editphone);
+        freestates=findViewById(R.id.editstates);
         btndate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +67,7 @@ public class Offer_transport extends AppCompatActivity {
         });
         btnother=findViewById(R.id.btnother);
         textother=findViewById(R.id.textother);
+
         listItems = getResources().getStringArray(R.array.locations_array);
         checkedItems = new boolean[listItems.length];
         btnother.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +127,9 @@ public class Offer_transport extends AppCompatActivity {
                 String from=spinnerfrom.getSelectedItem().toString();
                 String where=spinnerwhere.getSelectedItem().toString();
                 String when=btndate.getText().toString();
-                Fire_Trip_Offer trip= new Fire_Trip_Offer(id,from,where,when,mCities);
+                String freests=freestates.getText().toString();
+                String phonenum=phnum.getText().toString();
+                Fire_Trip trip= new Fire_Trip(id,from,where,when,freests,mCities,phonenum);
                 db.child(id).setValue(trip);
 
             }

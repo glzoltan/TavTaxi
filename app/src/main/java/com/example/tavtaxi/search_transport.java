@@ -68,8 +68,7 @@ public class search_transport extends AppCompatActivity {
                 String where=spn2.getSelectedItem().toString();
                 Button btn2=(Button)findViewById(R.id.button);
                 String when=btn2.getText().toString();
-                Fire_Trip trip= new Fire_Trip(id,from,where,when);
-                db.child(id).setValue(trip);
+
                 Intent intent = new Intent(getApplicationContext(), ListTravels.class);
                 startActivity(intent);
             }

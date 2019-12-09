@@ -32,11 +32,11 @@ public class ListTravels extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewTrips);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Fire_Trip newTrip = new Fire_Trip("id","Here","There","When", "Freestates");
+       // Fire_Trip newTrip = new Fire_Trip("id","Here","There","When", "Freestates",null);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Trips").push().setValue(newTrip);
-        mDatabase.child("Trips").orderByKey().addValueEventListener(
+       // mDatabase.child("trips").push().setValue(newTrip);
+        mDatabase.child("trips").orderByKey().addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -47,7 +47,9 @@ public class ListTravels extends AppCompatActivity {
                             String where = trips.getWHERE();
                             String when = trips.getWHEN();
                             String freestates = trips.getFreeStates();
-                            tripList.add(new Fire_Trip("id", from, where, when,freestates));
+                            String phone=trips.getPhoneNumber();
+                            ArrayList<String> cities=trips.getCities();
+                            tripList.add(new Fire_Trip("id", from, where, when,freestates,cities,phone));
                             adapter = new TripsAdapter(ListTravels.this, tripList);
                             recyclerView.setAdapter(adapter);
                         }
