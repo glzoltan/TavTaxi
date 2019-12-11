@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tavtaxi">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,6 +26,7 @@
         <activity android:name=".ListTravels"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
+
     </application>
 
 </manifest>
