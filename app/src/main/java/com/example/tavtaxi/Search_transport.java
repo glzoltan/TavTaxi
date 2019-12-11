@@ -79,6 +79,7 @@ public class Search_transport extends AppCompatActivity {
                 intent.putExtra("where",where);
                 intent.putExtra("when",when);
                 startActivity(intent);
+
             }
         });
     }
