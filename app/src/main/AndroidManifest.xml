@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".search_transport" />
+        <activity android:name=".Search_transport" />
         <activity android:name=".MainMenu" />
         <activity android:name=".ListSelfTrips" />
         <activity android:name=".ListTravels"></activity>

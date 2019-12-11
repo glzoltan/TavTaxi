@@ -141,17 +141,14 @@
         android:id="@+id/buttonSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
+        android:background="@drawable/button_background"
         android:text="Send Verification Code"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEntry2"
-        android:background="@drawable/button_background"/>
+        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/nameEntry2" />
 
     <EditText
         android:id="@+id/editTextVerificationCode"
