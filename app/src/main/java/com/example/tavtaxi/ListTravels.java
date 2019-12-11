@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -20,7 +22,7 @@ public class ListTravels extends AppCompatActivity {
     RecyclerView recyclerView;
     TripsAdapter adapter;
     private DatabaseReference mDatabase;
-
+    public static final String SHARED_PREFS="sharedPrefs";
     List<Fire_Trip> tripList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,27 @@ public class ListTravels extends AppCompatActivity {
                             String freestates = trips.getFreeStates();
                             String phone=trips.getPhoneNumber();
                             ArrayList<String> cities=trips.getCities();
-                            tripList.add(new Fire_Trip("id", from, where, when,freestates,cities,phone));
+                            Intent intent = getIntent();
+                            String sfrom = intent.getStringExtra("from");
+                            String swhere = intent.getStringExtra("where");
+                            String swhen = intent.getStringExtra("when");
+                            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                            String activityfrom= sharedPreferences.getString("activityfrom","");
+                            String phoneuser=sharedPreferences.getString("phonenumber","");
+                            if(activityfrom.equals("search")){
+                                if((from.equals(sfrom) && where.equals(swhere) && when.equals(swhen))||
+                                        (from.equals(sfrom) && cities.contains(where) && when.equals(swhen))||
+                                        (cities.contains(sfrom) && where.equals(swhere) && when.equals(swhen))) {
+                                    tripList.add(new Fire_Trip("id", from, where, when, freestates, cities, phone));
+                                }
+                            }
+                            else{
+
+                                if(phone.equals(phoneuser)){
+                                    tripList.add(new Fire_Trip("id", from, where, when, freestates, cities, phone));
+                                }
+                            }
+
                             adapter = new TripsAdapter(ListTravels.this, tripList);
                             recyclerView.setAdapter(adapter);
                         }

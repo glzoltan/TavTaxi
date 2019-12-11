@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -28,10 +29,11 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button sentButton;
     private Button loginButton;
-    private EditText editTextPhone ;
+    private EditText editTextPhone, editTextName ;
     private EditText editTextVerificationCode ;
     String codeSent;
     private DatabaseReference mDatabase;
+    public static final String SHARED_PREFS="sharedPrefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         sentButton = findViewById(R.id.buttonSend);
         loginButton = findViewById(R.id.buttonLogin);
         editTextPhone = findViewById(R.id.editTextPhoneNumber);
+        editTextName =findViewById(R.id.editTextName);
         editTextVerificationCode = findViewById(R.id.editTextVerificationCode);
         mAuth = FirebaseAuth.getInstance();
 
@@ -90,8 +93,16 @@ public class LoginActivity extends AppCompatActivity {
                             //here you can open new activity
                             Toast.makeText(getApplicationContext(),
                                     "Login Successfull", Toast.LENGTH_LONG).show();
+                            String name = editTextName.getText().toString();
+                            String phn =editTextPhone.getText().toString();
+                            SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sharedPreferences.edit();
+                            editor.putString("username",name);
+                            editor.putString("phonenumber",phn);
+                            editor.apply();
                             Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                             startActivity(intent);
+
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getApplicationContext(),

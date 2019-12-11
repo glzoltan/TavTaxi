@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,13 +28,14 @@ public class Offer_transport extends AppCompatActivity {
     DatePickerDialog dpd;
     Spinner spinnerfrom,spinnerwhere;
     Button btndate,btnother,btnadd;
-    TextView textother;
-    EditText phnum, freestates;
+    TextView phnum,textother;
+    EditText  freestates;
     DatabaseReference db;
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     ArrayList<String> mCities = new ArrayList<>();
+    public static final String SHARED_PREFS="sharedPrefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,10 @@ public class Offer_transport extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerwhere.setAdapter(adapter2);
         btndate=findViewById(R.id.button);
-        phnum=findViewById(R.id.editphone);
+        phnum=findViewById(R.id.textphone);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        String phonenum = sharedPreferences.getString("phonenumber","");
+        phnum.setText(phonenum);
         freestates=findViewById(R.id.editstates);
         btndate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +129,10 @@ public class Offer_transport extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(btndate.getText().equals("PICK A DATE")){
+                    Toast.makeText(getApplicationContext() , "PLEASE CHOSE A DATE", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 db = FirebaseDatabase.getInstance().getReference("trips");
                 String id=db.push().getKey();
                 String from=spinnerfrom.getSelectedItem().toString();
