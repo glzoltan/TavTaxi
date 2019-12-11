@@ -43,9 +43,9 @@ public class ListTravels extends AppCompatActivity {
                         // for example: if you're expecting your user's data as an object of the "User" class.
                         for(DataSnapshot ds : dataSnapshot.getChildren()) {
                             Fire_Trip trips = ds.getValue(Fire_Trip.class);
-                            String from = trips.getFROM();
-                            String where = trips.getWHERE();
-                            String when = trips.getWHEN();
+                            String from = trips.getFrom();
+                            String where = trips.getWhere();
+                            String when = trips.getWhen();
                             String freestates = trips.getFreeStates();
                             String phone=trips.getPhoneNumber();
                             ArrayList<String> cities=trips.getCities();

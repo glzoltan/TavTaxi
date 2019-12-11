@@ -44,9 +44,9 @@ public class ListSelfTrips extends AppCompatActivity {
                         // for example: if you're expecting your user's data as an object of the "User" class.
                         for(DataSnapshot ds : dataSnapshot.getChildren()) {
                             Fire_Trip self_trip = ds.getValue(Fire_Trip.class);
-                            String from = self_trip.getFROM();
-                            String where = self_trip.getWHERE();
-                            String when = self_trip.getWHEN();
+                            String from = self_trip.getFrom();
+                            String where = self_trip.getWhere();
+                            String when = self_trip.getWhen();
                             selfTripList.add(new Fire_Trip("id", from, where, when,null,null,null));
                             adapter = new SelfTripsAdapter(ListSelfTrips.this, selfTripList);
                             recyclerView.setAdapter(adapter);

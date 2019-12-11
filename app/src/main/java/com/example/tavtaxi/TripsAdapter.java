@@ -35,9 +35,9 @@ public class TripsAdapter extends  RecyclerView.Adapter<TripsAdapter.TripsViewHo
     public void onBindViewHolder(@NonNull TripsViewHolder holder, int position) {
 
         Fire_Trip trip = TripList.get(position);
-        holder.from.setText(trip.getFROM());
-        holder.to.setText(trip.getWHERE());
-        holder.when.setText(trip.getWHEN());
+        holder.from.setText(trip.getFrom());
+        holder.to.setText(trip.getWhere());
+        holder.when.setText(trip.getWhen());
         holder.states.setText(trip.getFreeStates());
         holder.phone.setText(trip.getPhoneNumber());
         ArrayList<String> cts=trip.getCities();

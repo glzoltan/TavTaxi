@@ -33,9 +33,9 @@ public class SelfTripsAdapter extends  RecyclerView.Adapter<SelfTripsAdapter.Sel
     public void onBindViewHolder(@NonNull SelfTripsViewHolder holder, int position) {
 
             Fire_Trip trip = selfTripList.get(position);
-            holder.from.setText(trip.getFROM());
-        holder.to.setText(trip.getWHERE());
-        holder.when.setText(trip.getWHERE());
+            holder.from.setText(trip.getFrom());
+        holder.to.setText(trip.getWhere());
+        holder.when.setText(trip.getWhen());
 
     }
 

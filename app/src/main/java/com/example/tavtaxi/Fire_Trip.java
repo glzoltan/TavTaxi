@@ -15,28 +15,28 @@ public class Fire_Trip{
 
     }
 
-    public  Fire_Trip(String ID, String FROM, String WHERE, String WHEN, String FREESTATES,ArrayList<String> CITIES,String PHONENUMBER ){
-        this.id = ID;
-        this.from = FROM;
-        this.where = WHERE;
-        this.when = WHEN;
-        this.freeStates = FREESTATES;
-        this.cities = CITIES;
-        this.phoneNumber=PHONENUMBER;
+    public  Fire_Trip(String id, String from, String where, String when, String freeStates,ArrayList<String> cities,String phoneNumber ){
+        this.id = id;
+        this.from = from;
+        this.where = where;
+        this.when = when;
+        this.freeStates = freeStates;
+        this.cities = cities;
+        this.phoneNumber=phoneNumber;
     }
-    public String getID() {
+    public String getId() {
         return id;
     }
 
-    public String getFROM() {
+    public String getFrom() {
         return from;
     }
 
-    public String getWHERE() {
+    public String getWhere() {
         return where;
     }
 
-    public String getWHEN() {
+    public String getWhen() {
         return when;
     }
 
