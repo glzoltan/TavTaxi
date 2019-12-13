@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "23454752277-893rdffmr7idr9qojtn0hnrrbqbu4959.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tavtaxi",
+            "certificate_hash": "434d9841ac04755eb828358a398352ab97d71799"
+          }
+        },
+        {
           "client_id": "23454752277-8dlh2p6ga81o8khcg5jc6lftde75rh3q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

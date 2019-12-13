@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     String codeSent;
     private DatabaseReference mDatabase;
     public static final String SHARED_PREFS="sharedPrefs";
+    private FirebaseAuth authenticatedUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,30 @@ public class LoginActivity extends AppCompatActivity {
 
         mDatabase.child("users").setValue("User");
 
+        final CheckBox checkBox = (CheckBox)findViewById(R.id.checkBoxRememberMe);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor editor = preferences.edit();
+        if(preferences.contains("checked") && preferences.getBoolean("checked", false)) {
+            checkBox.setChecked(true);
+            Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+            startActivity(intent);
+
+        }else {
+            checkBox.setChecked(false);
+
+        }
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(checkBox.isChecked()) {
+                    editor.putBoolean("checked", true);
+                    editor.apply();
+                }else{
+                    editor.putBoolean("checked", false);
+                    editor.apply();
+                }
+            }
+        });
 
         sentButton.setOnClickListener(new View.OnClickListener() {
             @Override
