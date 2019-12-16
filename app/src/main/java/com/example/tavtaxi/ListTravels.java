@@ -45,6 +45,7 @@ public class ListTravels extends AppCompatActivity {
                             String from = trips.getFrom();
                             String where = trips.getWhere();
                             String when = trips.getWhen();
+                            String tripID=trips.getId();
                             String freestates = trips.getFreeStates();
                             String phone=trips.getPhoneNumber();
                             ArrayList<String> cities=trips.getCities();
@@ -52,20 +53,22 @@ public class ListTravels extends AppCompatActivity {
                             String sfrom = intent.getStringExtra("from");
                             String swhere = intent.getStringExtra("where");
                             String swhen = intent.getStringExtra("when");
+
                             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
                             String activityfrom= sharedPreferences.getString("activityfrom","");
                             String phoneuser=sharedPreferences.getString("phonenumber","");
+                            String username=sharedPreferences.getString("username","");
                             if(activityfrom.equals("search")){
                                 if((from.equals(sfrom) && where.equals(swhere) && when.equals(swhen))||
                                         (from.equals(sfrom) && cities.contains(where) && when.equals(swhen))||
                                         (cities.contains(sfrom) && where.equals(swhere) && when.equals(swhen))) {
-                                    tripList.add(new Fire_Trip("id", from, where, when, freestates, cities, phone));
+                                    tripList.add(new Fire_Trip(tripID,username, from, where, when, freestates, cities, phone));
                                 }
                             }
                             else{
 
                                 if(phone.equals(phoneuser)){
-                                    tripList.add(new Fire_Trip("id", from, where, when, freestates, cities, phone));
+                                    tripList.add(new Fire_Trip(tripID, username,from, where, when, freestates, cities, phone));
                                 }
                             }
 

@@ -51,7 +51,7 @@ public class ListSelfTrips extends AppCompatActivity {
                                 String from = self_trip.getFrom();
                                 String where = self_trip.getWhere();
                                 String when = self_trip.getWhen();
-                                selfTripList.add(new Fire_Trip("id", from, where, when,null,null,phonenumber));
+                                selfTripList.add(new Fire_Trip("id","str", from, where, when,null,null,phonenumber));
                                 adapter = new SelfTripsAdapter(ListSelfTrips.this, selfTripList);
                                 recyclerView.setAdapter(adapter);
                             }

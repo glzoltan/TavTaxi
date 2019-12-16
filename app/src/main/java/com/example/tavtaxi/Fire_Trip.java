@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Fire_Trip{
     public String id;
+    public String name;
     public String from;
     public String where;
     public String when;
@@ -15,8 +16,9 @@ public class Fire_Trip{
 
     }
 
-    public  Fire_Trip(String id, String from, String where, String when, String freeStates,ArrayList<String> cities,String phoneNumber ){
+    public  Fire_Trip(String id, String name,String from, String where, String when, String freeStates,ArrayList<String> cities,String phoneNumber ){
         this.id = id;
+        this.name=name;
         this.from = from;
         this.where = where;
         this.when = when;
@@ -76,6 +78,14 @@ public class Fire_Trip{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
