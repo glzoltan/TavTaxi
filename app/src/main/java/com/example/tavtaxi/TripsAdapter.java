@@ -45,7 +45,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
     @Override
     public void onBindViewHolder(@NonNull final TripsViewHolder holder, int position) {
 
-        Fire_Trip trip = TripList.get(position);
+        final Fire_Trip trip = TripList.get(position);
         SharedPreferences sharedPreferences = Context.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         String activityfrom = sharedPreferences.getString("activityfrom","");
         if(activityfrom.equals("menu"))
@@ -91,6 +91,13 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Context.getApplicationContext(), Offer_transport.class);
+                intent.putExtra("id",trip.getId());
+                intent.putExtra("from", trip.getFrom());
+                intent.putExtra("where",trip.getWhere());
+                intent.putExtra("when",trip.getWhen());
+                intent.putExtra("states",trip.getFreeStates());
+                intent.putExtra("phone",trip.getPhoneNumber());
+                intent.putExtra("username",trip.getName());
                 Context.startActivity(intent);
 
             }
