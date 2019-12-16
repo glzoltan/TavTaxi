@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -26,7 +27,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
 
     private Context Context;
     private List<Fire_Trip> TripList;
-
+    public static final String SHARED_PREFS="sharedPrefs";
     public TripsAdapter(Context Context, List<Fire_Trip> TripList) {
         this.Context = Context;
         this.TripList = TripList;
@@ -37,6 +38,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
     public TripsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(Context);
         View view = inflater.inflate(R.layout.one_list_item, null);
+
         return new TripsViewHolder(view);
     }
 
@@ -44,11 +46,25 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
     public void onBindViewHolder(@NonNull final TripsViewHolder holder, int position) {
 
         Fire_Trip trip = TripList.get(position);
+        SharedPreferences sharedPreferences = Context.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        String activityfrom = sharedPreferences.getString("activityfrom","");
+        if(activityfrom.equals("menu"))
+        {
+            holder.buttonModify.setVisibility(View.VISIBLE);
+            holder.buttonCall.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            holder.buttonModify.setVisibility(View.INVISIBLE);
+            holder.buttonCall.setVisibility(View.VISIBLE);
+        }
         holder.from.setText(trip.getFrom());
         holder.to.setText(trip.getWhere());
         holder.when.setText(trip.getWhen());
         holder.states.setText(trip.getFreeStates());
         holder.phone.setText(trip.getPhoneNumber());
+        holder.name.setText(trip.getName());
+        holder.tripid.setText(trip.getId());
         ArrayList<String> cts = trip.getCities();
         String item = "";
         for (int i = 0; i < cts.size(); i++) {
@@ -71,6 +87,14 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
 
             }
         });
+        holder.buttonModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Context.getApplicationContext(), Offer_transport.class);
+                Context.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -81,12 +105,14 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
 
     class TripsViewHolder extends RecyclerView.ViewHolder{
 
-        TextView from,to,when,cities;
+        TextView from,to,when,cities,name,tripid;
         TextView phone,states;
-        Button buttonCall;
+        Button buttonCall,buttonModify;
         public TripsViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            name=itemView.findViewById(R.id.username);
+            tripid=itemView.findViewById(R.id.tripid);
             from = itemView.findViewById(R.id.from_tv);
             to = itemView.findViewById(R.id.where_tv);
             when = itemView.findViewById(R.id.when_vt);
@@ -94,6 +120,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
             cities = itemView.findViewById(R.id.cities_tv);
             phone=itemView.findViewById(R.id.textPhone);
             buttonCall=itemView.findViewById(R.id.call_btn);
+            buttonModify=itemView.findViewById(R.id.modify_btn);
 
         }
     }

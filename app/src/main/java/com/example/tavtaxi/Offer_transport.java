@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class Offer_transport extends AppCompatActivity {
     Calendar c;
     DatePickerDialog dpd;
     Spinner spinnerfrom,spinnerwhere;
-    Button btndate,btnother,btnadd;
+    Button btndate,btnother,btnadd,btnmodify;
     TextView phnum,textother;
     EditText  freestates;
     DatabaseReference db;
@@ -40,6 +41,20 @@ public class Offer_transport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_transport);
+        btnadd=findViewById(R.id.btnadd);
+        btnmodify=findViewById(R.id.btnmodify);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String activityfrom = sharedPreferences.getString("activityfrom","");
+        if(activityfrom.equals("menu"))
+        {
+            btnmodify.setVisibility(View.VISIBLE);
+            btnadd.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            btnmodify.setVisibility(View.INVISIBLE);
+            btnadd.setVisibility(View.VISIBLE);
+        }
         spinnerfrom = findViewById(R.id.spinnerfrom);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.locations_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -51,8 +66,8 @@ public class Offer_transport extends AppCompatActivity {
         spinnerwhere.setAdapter(adapter2);
         btndate=findViewById(R.id.button);
         phnum=findViewById(R.id.textphone);
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        String phonenum = sharedPreferences.getString("phonenumber","");
+        SharedPreferences sharedPreferences2 = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        String phonenum = sharedPreferences2.getString("phonenumber","");
         phnum.setText(phonenum);
         freestates=findViewById(R.id.editstates);
         btndate.setOnClickListener(new View.OnClickListener() {
@@ -125,23 +140,26 @@ public class Offer_transport extends AppCompatActivity {
                 mDialog.show();
             }
         });
-        btnadd=findViewById(R.id.btnadd);
+
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(btndate.getText().equals("PICK A DATE")){
+                if(btndate.getText().equals("Pick a date")){
                     Toast.makeText(getApplicationContext() , "PLEASE CHOSE A DATE", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 db = FirebaseDatabase.getInstance().getReference("trips");
+                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                String username = sharedPreferences.getString("username","");
                 String id=db.push().getKey();
                 String from=spinnerfrom.getSelectedItem().toString();
                 String where=spinnerwhere.getSelectedItem().toString();
                 String when=btndate.getText().toString();
                 String freests=freestates.getText().toString();
                 String phonenum=phnum.getText().toString();
-                Fire_Trip trip= new Fire_Trip(id,from,where,when,freests,mCities,phonenum);
+                Fire_Trip trip= new Fire_Trip(id,username,from,where,when,freests,mCities,phonenum);
                 db.child(id).setValue(trip);
+                Toast.makeText(getApplicationContext() , "TRIP IS ADDED!", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -63,7 +63,7 @@ public class Search_transport extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(buttonDate.getText().equals("PICK A DATE")){
+                if(buttonDate.getText().equals("Pick a date")){
                     Toast.makeText(getApplicationContext() , "PLEASE CHOSE A DATE", Toast.LENGTH_SHORT).show();
                     return;
                 }
