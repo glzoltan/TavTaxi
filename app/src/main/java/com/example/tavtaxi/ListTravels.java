@@ -34,10 +34,7 @@ public class ListTravels extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewTrips);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-       // Fire_Trip newTrip = new Fire_Trip("id","Here","There","When", "Freestates",null);
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
-       // mDatabase.child("trips").push().setValue(newTrip);
         mDatabase.child("trips").orderByKey().addValueEventListener(
                 new ValueEventListener() {
                     @Override

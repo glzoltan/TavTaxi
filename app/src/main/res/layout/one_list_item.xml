@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/from_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="From" />
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        android:padding="10dp"
+        />
     <TextView
         android:id="@+id/where_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Where"
-        android:layout_below="@+id/from_tv"/>
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        android:layout_below="@+id/from_tv"
+        android:padding="10dp"
+        />
     <TextView
         android:id="@+id/when_vt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="When"
-        android:layout_below="@+id/where_tv"/>
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        android:layout_below="@+id/where_tv"
+        android:padding="10dp"
+        />
     <TextView
         android:id="@+id/free_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="freestates"
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
         android:layout_below="@+id/when_vt"
-        android:layout_marginBottom="20dp"/>
+        android:padding="10dp"
+        />
 
     <Button
         android:id="@+id/call_btn"
@@ -33,31 +47,31 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="290dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="20dp"
-        android:text="Call" />
+        android:text="Call"
+        android:background="@drawable/button_background"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/cities_tv"
-        android:layout_width="117dp"
-        android:layout_height="29dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="129dp"
-        android:layout_marginLeft="129dp"
-        android:layout_marginTop="15dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        android:layout_below="@+id/free_tv"
+        android:padding="10dp"
+        />
 
     <TextView
         android:id="@+id/textPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="56dp"
-        android:text="TextView" />
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        android:layout_below="@+id/cities_tv"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        />
 
 </RelativeLayout>
