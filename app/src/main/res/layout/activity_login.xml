@@ -26,14 +26,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="3dp"
-        android:textStyle="bold"
-        android:textColor="#000000"
         android:gravity="center_horizontal|center_vertical"
+        android:padding="10dp"
         android:text="Verification sms"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumEntry"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumEntry"
         android:textAlignment="viewStart"
-        android:padding="10dp"/>
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/phoneNum"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumEntry" />
 
     <View
         android:id="@+id/nameEntry"
@@ -43,7 +43,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="4dp"
         android:backgroundTint="@android:color/holo_green_dark"
-        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <View
@@ -52,11 +53,9 @@
         android:layout_height="59dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/holo_green_dark"
-        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumEntry"
         app:layout_constraintTop_toBottomOf="@+id/verificationText" />
 
     <TextView
@@ -88,13 +87,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center_horizontal|center_vertical"
+        android:padding="10dp"
         android:text="Phone number"
-        app:layout_constraintStart_toStartOf="@+id/nameEntry"
-        app:layout_constraintTop_toBottomOf="@+id/nameEntry"
-        android:textStyle="bold"
-        android:textColor="#000000"
         android:textAlignment="viewStart"
-        android:padding="10dp"/>
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/nameEntry" />
 
     <View
         android:id="@+id/phoneNumEntry"
@@ -103,7 +102,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:cacheColorHint="@android:color/holo_green_dark"
-        app:layout_constraintStart_toStartOf="@+id/phoneNum"
+        app:layout_constraintStart_toStartOf="@+id/nameEntry"
         app:layout_constraintTop_toBottomOf="@+id/phoneNum" />
 
     <EditText
@@ -111,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="0745698547"
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="@+id/phoneNumEntry"
         app:layout_constraintEnd_toEndOf="@+id/phoneNumEntry"
@@ -121,18 +121,14 @@
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="167dp"
-        android:layout_marginLeft="167dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/button_background"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="@id/loginView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonSend"
         app:layout_constraintTop_toBottomOf="@+id/buttonSend"
         app:layout_constraintVertical_bias="0.034" />
 
@@ -152,14 +148,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
         android:background="@drawable/button_background"
+        android:padding="5dp"
         android:text="Send Verification Code"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/nameEntry2"
-        android:padding="5dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameEntry2" />
 
     <EditText
         android:id="@+id/editTextVerificationCode"
@@ -176,16 +170,15 @@
         android:id="@+id/checkBoxRememberMe"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="52dp"
-        android:text="Remember me"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        android:textColor="#000000"
-        android:buttonTint="#000000"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_background"
-        android:padding="10dp"/>
+        android:buttonTint="#000000"
+        android:padding="10dp"
+        android:text="Remember me"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/loginView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

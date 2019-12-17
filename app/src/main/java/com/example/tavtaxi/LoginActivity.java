@@ -30,15 +30,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+
+    private FirebaseAuth firebaseAuthentication;
     private Button sentButton;
     private Button loginButton;
     private EditText editTextPhone, editTextName ;
     private EditText editTextVerificationCode ;
     String codeSent;
-    private DatabaseReference mDatabase;
+    private DatabaseReference loginDatabaseReference;
     public static final String SHARED_PREFS="sharedPrefs";
-    private FirebaseAuth authenticatedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +50,11 @@ public class LoginActivity extends AppCompatActivity {
         editTextPhone = findViewById(R.id.editTextPhoneNumber);
         editTextName =findViewById(R.id.editTextName);
         editTextVerificationCode = findViewById(R.id.editTextVerificationCode);
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuthentication = FirebaseAuth.getInstance();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        loginDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("users").setValue("User");
-
-        final CheckBox checkBox = (CheckBox)findViewById(R.id.checkBoxRememberMe);
+        final CheckBox checkBox = findViewById(R.id.checkBoxRememberMe);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor editor = preferences.edit();
         if(preferences.contains("checked") && preferences.getBoolean("checked", false)) {
@@ -115,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential)
+        firebaseAuthentication.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -146,6 +144,14 @@ public class LoginActivity extends AppCompatActivity {
     private void sendVerificationCode(){
 
         String phone = editTextPhone.getText().toString();
+
+        String name = editTextName.getText().toString();
+
+        if(name.isEmpty()){
+            editTextName.setError("Name is required");
+            editTextName.requestFocus();
+            return;
+        }
 
         if(phone.isEmpty()){
             editTextPhone.setError("Phone number is required");
@@ -179,7 +185,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
             Toast.makeText(getApplicationContext(),
-                    "Verification Successfull", Toast.LENGTH_LONG).show();
+                    "Verification Successful", Toast.LENGTH_LONG).show();
                     editTextVerificationCode.setText(phoneAuthCredential.getSmsCode());
 
 
@@ -187,7 +193,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-
+            Log.v("Login screen","Verification failed");
         }
 
         @Override
