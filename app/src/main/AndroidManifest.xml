@@ -22,9 +22,7 @@
         </activity>
         <activity android:name=".Search_transport" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".ListSelfTrips" />
         <activity android:name=".ListTravels"></activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
 
     </application>

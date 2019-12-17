@@ -10,20 +10,18 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 public class MainMenu extends AppCompatActivity {
-    Button opensearch,openoffer,openmytrips;
+    Button openSearchButton, openOfferButton, openMyTripsButton;
     public static final String SHARED_PREFS="sharedPrefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        opensearch =(Button)findViewById(R.id.button2);
-        openoffer=(Button)findViewById(R.id.button4);
-        openmytrips=findViewById(R.id.button5);
-        opensearch.setOnClickListener(new View.OnClickListener() {
+        openSearchButton =findViewById(R.id.searchButton);
+        openOfferButton =findViewById(R.id.offerButton);
+        openMyTripsButton =findViewById(R.id.myTripsButton);
+        openSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Search_transport.class);
@@ -31,7 +29,7 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
-        openoffer.setOnClickListener(new View.OnClickListener() {
+        openOfferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Offer_transport.class);
@@ -43,7 +41,7 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
-        openmytrips.setOnClickListener(new View.OnClickListener() {
+        openMyTripsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ListTravels.class);
@@ -63,11 +61,11 @@ public class MainMenu extends AppCompatActivity {
         final SharedPreferences.Editor editor = preferences.edit();
 
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(MainMenu.this);
-        builder1.setMessage("Are you sure you want to log out?");
-        builder1.setCancelable(true);
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenu.this);
+        alertBuilder.setMessage("Are you sure you want to log out?");
+        alertBuilder.setCancelable(true);
 
-        builder1.setPositiveButton(
+        alertBuilder.setPositiveButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -80,7 +78,7 @@ public class MainMenu extends AppCompatActivity {
                     }
                 });
 
-        builder1.setNegativeButton(
+        alertBuilder.setNegativeButton(
                 "No",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -88,7 +86,7 @@ public class MainMenu extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert11 = builder1.create();
+        AlertDialog alert11 = alertBuilder.create();
         alert11.show();
 
     }

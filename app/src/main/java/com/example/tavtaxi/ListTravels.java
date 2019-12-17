@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +22,7 @@ import java.util.List;
 public class ListTravels extends AppCompatActivity {
     RecyclerView recyclerView;
     TripsAdapter adapter;
-    private DatabaseReference mDatabase;
+    private DatabaseReference databaseReference;
     public static final String SHARED_PREFS="sharedPrefs";
     List<Fire_Trip> tripList;
     @Override
@@ -34,8 +35,8 @@ public class ListTravels extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewTrips);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("trips").orderByKey().addValueEventListener(
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("trips").orderByKey().addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -60,7 +61,7 @@ public class ListTravels extends AppCompatActivity {
                             String username=sharedPreferences.getString("username","");
                             if(activityfrom.equals("search")){
                                 if((from.equals(sfrom) && where.equals(swhere) && when.equals(swhen))||
-                                        (from.equals(sfrom) && cities.contains(where) && when.equals(swhen))||
+                                        (from.equals(sfrom) && cities.contains(swhere) && when.equals(swhen))||
                                         (cities.contains(sfrom) && where.equals(swhere) && when.equals(swhen))) {
                                     tripList.add(new Fire_Trip(tripID,username, from, where, when, freestates, cities, phone));
                                 }
@@ -74,12 +75,17 @@ public class ListTravels extends AppCompatActivity {
 
                             adapter = new TripsAdapter(ListTravels.this, tripList);
                             recyclerView.setAdapter(adapter);
+
+
+                        }
+                        if (tripList.size()==0){
+                            Toast.makeText(getApplicationContext(),"No trips to show",Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        // read query is cancelled.
+                        Log.v("List travels activity: " ,"Database error" );
                     }
                 });
     }
